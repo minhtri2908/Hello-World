@@ -1,0 +1,104 @@
+.App {
+  display: flex;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: none;
+}
+
+.cursor {
+  background-color: rgb(68, 196, 189);
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.Text {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  color: white;
+  font-size: 5em;
+  font-family: Bradley Hand ITC;
+}
+
+.Text span {
+  position: relative;
+  filter: blur(5px);
+  padding: 0 5px;
+  transition: 1s;
+}
+
+.space {
+  margin: 30px;
+}
+
+
+.Text span:hover {
+  filter: blur(0px);
+  color: rgb(80, 199, 199);
+  transition: 0s;
+}
+
+.Text span a {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+}
+
+.Text .y {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+}
+
+.Text .r {
+  background: transparent;
+}
+
+.r:hover {
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  box-shadow: -5px -5px 30px 5px red, 5px 5px 30px 5px blue;
+  transition: 0.5s;
+}
+
+.Text span:hover .r::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  background: white;
+  box-shadow: 0 53px white, 36px 53px white, 36px 0 white;
+}
+
+.coder {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  color: white;
+  filter: blur(0.5px);
+  cursor: pointer;
+  font-family: Bradley Hand ITC;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.App-header {
+  display: flex;
+}
+
+.infor {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.logogithub img {
+  width: 45px;
+}
