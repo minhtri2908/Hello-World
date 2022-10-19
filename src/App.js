@@ -1,29 +1,36 @@
-import logo from './image/25231.png';
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+// import ReactAudioPlayer from 'react-audio-player';
+
 function App() {
+  const audioRef = useRef();
+  const [duration, setDuration] = useState(0);
+  const [isPlay, setPlay] = useState(false);
+  const handleLoadedData = () => {
+    setDuration(audioRef.current.duration);
+    if (isPlay) audioRef.current.play();
+  };
 
   const [mousePosition, setMousePosition] = useState({
     x: 0,
-    y: 0
+    y: 0,
   });
-  const [cursorVariant, setCursorVariant] = useState("default");
-
+  const [cursorVariant, setCursorVariant] = useState('default');
 
   useEffect(() => {
-    const mouseMove = e => {
+    const mouseMove = (e) => {
       setMousePosition({
         x: e.clientX,
-        y: e.clientY
-      })
-    }
+        y: e.clientY,
+      });
+    };
 
-    window.addEventListener("mousemove", mouseMove);
+    window.addEventListener('mousemove', mouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    }
+      window.removeEventListener('mousemove', mouseMove);
+    };
   }, []);
 
   const variants = {
@@ -36,45 +43,150 @@ function App() {
       width: 150,
       x: mousePosition.x - 75,
       y: mousePosition.y - 75,
-      backgroundColor: "yellow",
-      mixBlendMode: "difference"
-    }
-  }
+      backgroundColor: 'yellow',
+      mixBlendMode: 'difference',
+    },
+  };
 
-  const textEnter = () => setCursorVariant("text");
-  const textLeave = () => setCursorVariant("default");
+  const textEnter = () => setCursorVariant('text');
+  const textLeave = () => setCursorVariant('default');
 
   return (
     <div onMouseLeave={textEnter} className="App">
       <div>
         <motion.div
-          className='cursor'
+          className="cursor"
           variants={variants}
           animate={cursorVariant}
         />
         <header className="App-header">
-          <div onMouseEnter={textEnter} onMouseLeave={textLeave} className="Text">
-            <div className="r"><span><i></i>H</span></div>
-            <div className="r"><span><i></i>E</span></div>
-            <div className="r"><span><i></i>L</span></div>
-            <div className="r"><span><i></i>L</span></div>
-            <div className="r"><span><i></i>O</span></div>
+          <div
+            onMouseEnter={textEnter}
+            onMouseLeave={textLeave}
+            className="Text"
+          >
+            <div className="r">
+              <span>
+                <i></i>H
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>A
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>P
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>P
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>Y
+              </span>
+            </div>
           </div>
           <div className="space"></div>
-          <div onMouseEnter={textEnter} onMouseLeave={textLeave} className="Text">
-            <div className="r"><span><i></i>W</span></div>
-            <div className="r"><span><i></i>O</span></div>
-            <div className="r"><span><i></i>R</span></div>
-            <div className="r"><span><i></i>L</span></div>
-            <div className="r"><span><i></i>D</span></div>
+          <div
+            onMouseEnter={textEnter}
+            onMouseLeave={textLeave}
+            className="Text"
+          >
+            <div className="r">
+              <span>
+                <i></i>B
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>I
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>R
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>T
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>H
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>D
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>A
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>Y
+              </span>
+            </div>
+          </div>
+          <div className="space"></div>
+          <div
+            onMouseEnter={textEnter}
+            onMouseLeave={textLeave}
+            className="Text"
+          >
+            <div className="r">
+              <span>
+                <i></i>T
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>r
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>à
+              </span>
+            </div>
+            <div className="space"></div>
+            <div className="r">
+              <span>
+                <i></i>G
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>i
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>a
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>n
+              </span>
+            </div>
+            <div className="r">
+              <span>
+                <i></i>g
+              </span>
+            </div>
           </div>
         </header>
-        <div className="infor">
-          <div onMouseEnter={textEnter} onMouseLeave={textLeave} className="logogithub">
-            <img src={logo} alt={logo}/>
-          </div>
-          <a onMouseEnter={textEnter} onMouseLeave={textLeave} href="https://github.com/minhtri2908" target="blank" className="coder" >Pham Minh Tri</a>
-        </div>
       </div>
     </div>
   );
